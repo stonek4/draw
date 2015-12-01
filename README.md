@@ -1,5 +1,6 @@
 ![alt text](https://f.cloud.github.com/assets/220864/730169/feb98294-e24b-11e2-903d-b3cbc68f3a48.gif "Action Video")
 
+##Text box coming soon!
 ## An intuitive collaborative drawing web based tool.
 Collaborative real-time drawing, sketching & painting
 
