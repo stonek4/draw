@@ -15,9 +15,9 @@ var settings = require('./src/util/Settings.js'),
     http = require('http'),
     https = require('https');
 
-/** 
+/**
  * SSL Logic and Server bindings
- */ 
+ */
 if(settings.ssl){
   console.log("SSL Enabled");
   console.log("SSL Key File" + settings.ssl.key);
@@ -34,7 +34,7 @@ if(settings.ssl){
   var server = app.listen(settings.port);
 }
 
-/** 
+/**
  * Build Client Settings that we will send to the client
  */
 var clientSettings = {
@@ -170,6 +170,11 @@ io.sockets.on('connection', function (socket) {
     io.sockets.in(room).emit('image:add', uid, data, position, name);
   });
 
+  socket.on('chat:message', function(room, uid, data, message, name){
+      draw.chatMessage(room, uid, message, name);
+      io.sockets.in(room).emit('chat:message', uid, message, name);
+  });
+
 });
 
 // Subscribe a client to a room
@@ -202,7 +207,7 @@ function subscribe(socket, data) {
   }
 
   // Broadcast to room the new user count -- currently broken
-  var rooms = socket.adapter.rooms[room]; 
+  var rooms = socket.adapter.rooms[room];
   var roomUserCount = Object.keys(rooms).length;
   io.to(room).emit('user:connect', roomUserCount);
 }
@@ -224,4 +229,3 @@ function loadFromMemory(room, socket) {
 function loadError(socket) {
   socket.emit('project:load:error');
 }
-
