@@ -19,7 +19,7 @@ function pickColor(color) {
  */
 function positionPickerInCanvas(cursor) {
   var picker = $('#mycolorpicker');
-  
+
   // Determine best place for color picker so it isn't off the screen
   var pickerSize = new Point(picker.width(), picker.height());
   var windowSize = new Point($(window).width(), $(window).height());
@@ -37,12 +37,12 @@ function positionPickerInCanvas(cursor) {
   } else if (brSpace.x > pickerSize.x) {
     newPos.x = cursor.x + spacer.x;
   }
-  
+
   // Get the canvasContainer's position so we can make sure the picker
   // doesn't go outside of the canvasContainer (to keep it pretty)
   var minY = 10;
   // Buffer so we don't get too close to the bottom cause scroll bars
-  var bBuffer = Math.max(50, (windowSize.y - ($('#canvasContainer').position().top 
+  var bBuffer = Math.max(50, (windowSize.y - ($('#canvasContainer').position().top
       + $('#canvasContainer').height())) + 70);
 
   // Favour having the picker in the middle of the cursor
@@ -53,7 +53,7 @@ function positionPickerInCanvas(cursor) {
   } else if (brSpace.y < ((pickerSize.y / 2) + bBuffer) && tlSpace.y > (brSpace.y - (pickerSize.y + bBuffer))) {
     newPos.y = windowSize.y - (pickerSize.y + bBuffer);
   }
-  
+
   $('#mycolorpicker').css({
     "left": newPos.x,
     "top": newPos.y
@@ -207,7 +207,7 @@ $('.toggleBackground').click(function() {
   $('#myCanvas').toggleClass('whiteBG');
 });
 
-// --------------------------------- 
+// ---------------------------------
 // DRAWING EVENTS
 
 
@@ -226,7 +226,7 @@ function onMouseDown(event) {
   if (event.event.button == 1 || event.event.button == 2) {
     return;
   }
-  
+
   // Hide color picker if it is visible already
   var picker = $('#mycolorpicker');
   if (picker.is(':visible')) {
@@ -549,7 +549,7 @@ $('#myCanvas').bind('drop', function(e) {
 
 
 
-// --------------------------------- 
+// ---------------------------------
 // CONTROLS EVENTS
 
 var $color = $('.colorSwatch:not(#pickerSwatch)');
@@ -729,7 +729,7 @@ function uploadImage(file) {
 
 
 
-// --------------------------------- 
+// ---------------------------------
 // SOCKET.IO EVENTS
 socket.on('settings', function(settings) {
   processSettings(settings);
@@ -831,16 +831,20 @@ socket.on('image:add', function(artist, data, position, name) {
   }
 });
 
+socket.on('chat:message', function() {
+  console.log(arguments);
+});
+
 
 console.log(view);
 
-// --------------------------------- 
+// ---------------------------------
 // SOCKET.IO EVENT FUNCTIONS
 
 // Updates the active connections
 var $user_count = $('#online_count');
 
-function update_user_count(count) {  
+function update_user_count(count) {
   $user_count.text((count === 1) ? "1" : " " + count);
 }
 
@@ -920,6 +924,10 @@ function processSettings(settings) {
 
   })
 
+}
+
+window.sendChatMessage = function(name,message){
+    socket.emit('chat:message', room, uid, name, message);
 }
 
 // Periodically save drawing
