@@ -1,5 +1,5 @@
 ## Check out the new chat functionality!
-![alt text](https://www.dropbox.com/s/h4lvrranc8t92wg/Screenshot%202015-12-07%2022.17.45.png?dl=1 "chat functionality")
+![alt text](./Screenshot%202015-12-07%2022.17.45.png "chat functionality")
 
 ## An intuitive collaborative drawing web based tool.
 Collaborative real-time drawing, sketching & painting
