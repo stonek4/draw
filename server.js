@@ -171,7 +171,11 @@ io.sockets.on('connection', function (socket) {
   });
   
   //User sends a chat message
+<<<<<<< HEAD
     socket.on('chat:message', function(room, uid, message, name){
+=======
+  socket.on('chat:message', function(room, uid, message, name){
+>>>>>>> comments on sendchatmessage
       draw.chatMessage(room, uid, message, name);
       io.sockets.in(room).emit('chat:message', uid, message, name);
   });

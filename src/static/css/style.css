@@ -492,7 +492,7 @@ input[type=checkbox] {
 #chatBox {
   position: absolute;
   bottom: 0px;
-  right: 20px;
+  right: 60px;
   width: 180px;
   height: 200px;
   z-index: 400;
