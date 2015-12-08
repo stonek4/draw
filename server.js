@@ -15,9 +15,9 @@ var settings = require('./src/util/Settings.js'),
     http = require('http'),
     https = require('https');
 
-/**
+/** 
  * SSL Logic and Server bindings
- */
+ */ 
 if(settings.ssl){
   console.log("SSL Enabled");
   console.log("SSL Key File" + settings.ssl.key);
@@ -28,13 +28,13 @@ if(settings.ssl){
     cert: fs.readFileSync(settings.ssl.cert)
   };
   var app = express(options);
-  var server = https.createServer(options, app).listen(process.env.IP, process.env.PORT);
+  var server = https.createServer(options, app).listen(settings.ip, settings.port);
 }else{
   var app = express();
-  var server = app.listen(process.env.PORT);
+  var server = app.listen(settings.port);
 }
 
-/**
+/** 
  * Build Client Settings that we will send to the client
  */
 var clientSettings = {
@@ -208,7 +208,7 @@ function subscribe(socket, data) {
   }
 
   // Broadcast to room the new user count -- currently broken
-  var rooms = socket.adapter.rooms[room];
+  var rooms = socket.adapter.rooms[room]; 
   var roomUserCount = Object.keys(rooms).length;
   io.to(room).emit('user:connect', roomUserCount);
 }
@@ -230,3 +230,4 @@ function loadFromMemory(room, socket) {
 function loadError(socket) {
   socket.emit('project:load:error');
 }
+
