@@ -28,10 +28,10 @@ if(settings.ssl){
     cert: fs.readFileSync(settings.ssl.cert)
   };
   var app = express(options);
-  var server = https.createServer(options, app).listen(settings.ip, settings.port);
+  var server = https.createServer(options, app).listen(process.env.IP, process.env.PORT);
 }else{
   var app = express();
-  var server = app.listen(settings.port);
+  var server = app.listen(process.env.PORT);
 }
 
 /**
@@ -170,11 +170,11 @@ io.sockets.on('connection', function (socket) {
     io.sockets.in(room).emit('image:add', uid, data, position, name);
   });
 
-  socket.on('chat:message', function(room, uid, data, message, name){
+  socket.on('chat:message', function(room, uid, message, name){
       draw.chatMessage(room, uid, message, name);
       io.sockets.in(room).emit('chat:message', uid, message, name);
   });
-
+  
 });
 
 // Subscribe a client to a room
