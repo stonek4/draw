@@ -468,6 +468,49 @@ input[type=checkbox] {
   bottom:0px;
 }
 
+#chatBox {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  width: 180px;
+  height: 200px;
+  z-index: 400;
+  background-color: #f7f7f7;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  border-top: 1px solid #999;
+  padding: 3px;
+  padding-bottom: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#chatLabel {
+    font-size: 13px;
+    margin: 4px 2 2 4px;
+    position: absolute;
+    font-family: Helvetica;
+}
+
+#chatMessages {
+    position: relative;
+    height: 80%;
+    top: 10%;
+    background-color: #f0f0f0;
+    list-style: none;
+    font-size: 12px;
+    overflow: auto;
+}
+
+#chatInputBox {
+    position: absolute;
+    padding: 3px 2px;
+    bottom: 0;
+    right: 0;
+    left: 3px;
+
+}
+
 .whiteBG{
   background-color:#fff;
 }

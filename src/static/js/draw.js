@@ -831,8 +831,12 @@ socket.on('image:add', function(artist, data, position, name) {
   }
 });
 
-socket.on('chat:message', function() {
-  console.log(arguments);
+socket.on('chat:message', function(uid, message, name) {
+  $('#chatMessages').append($('<li>').text(name + ": " + message));
+  if(30 > Math.abs( ($("#chatMessages")[0].scrollTop+ $("#chatMessages").height()) - $("#chatMessages")[0].scrollHeight )) {
+  //if the user is scrolled near the bottom, pull their scroll down with new text
+    $("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+  }
 });
 
 
@@ -926,10 +930,37 @@ function processSettings(settings) {
 
 }
 
-window.sendChatMessage = function(name,message){
-    socket.emit('chat:message', room, uid, name, message);
+function chatToggleShow() {
+  if($("#chatBox").height() > 10){
+    $("#chatBox").animate({height : 10},200);
+    $("#chatMessages").hide();
+    $("#chatInput").hide();
+  } else {
+    
+    if(chatName == ""){
+      chatName = prompt("What is your name?", "");
+    }
+    
+    $("#chatBox").animate({height : 200},200);
+    $("#chatMessages").show();
+    $("#chatInput").show();
+  }
+  
+}
+    
+function sendChatMessage() {
+    var message = $('#chatInput').val();
+    socket.emit('chat:message', room, uid, message, chatName || "unnamed");
+    $('#chatInput').val('');
+    return(false);
 }
 
+  var chatName = "";
+  chatToggleShow();
+  $("#chatLabel").click(function() {chatToggleShow();} );
+  $('form').submit(sendChatMessage);
+
+  
 // Periodically save drawing
 setInterval(function(){
   saveDrawing();
