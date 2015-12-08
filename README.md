@@ -1,12 +1,14 @@
-![alt text](https://f.cloud.github.com/assets/220864/730169/feb98294-e24b-11e2-903d-b3cbc68f3a48.gif "Action Video")
+## Check out the new chat functionality!
+![alt text](https://www.dropbox.com/s/h4lvrranc8t92wg/Screenshot%202015-12-07%2022.17.45.png?dl=1 "chat functionality")
 
-## Check out the new chat function!
 ## An intuitive collaborative drawing web based tool.
 Collaborative real-time drawing, sketching & painting
 
 Fast, light weight, easy to maintain.  Try the [demo] (http://draw.etherpad.org).
 
 Demo
+----
+[Etherdraw with chat demo](http://anarchistseeksmonarchist.com/whiteboard.html)
 ----
 [Etherdraw Demo site](http://draw.etherpad.org)
 
