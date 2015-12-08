@@ -931,16 +931,17 @@ function processSettings(settings) {
 }
 
 function chatToggleShow() {
+  //If it's currently big, make it small, vice versa
+  //If the user does not have a name, ask for one
+  
   if($("#chatBox").height() > 10){
     $("#chatBox").animate({height : 10},200);
     $("#chatMessages").hide();
     $("#chatInput").hide();
   } else {
-    
     if(chatName == ""){
       chatName = prompt("What is your name?", "");
     }
-    
     $("#chatBox").animate({height : 200},200);
     $("#chatMessages").show();
     $("#chatInput").show();
@@ -949,12 +950,13 @@ function chatToggleShow() {
 }
     
 function sendChatMessage() {
+    //get the text, emit it, clear the text
     var message = $('#chatInput').val();
     socket.emit('chat:message', room, uid, message, chatName || "unnamed");
     $('#chatInput').val('');
-    return(false);
+    return(false);//prevents page reload on submit
 }
-
+  //does chatName belong here?
   var chatName = "";
   chatToggleShow();
   $("#chatLabel").click(function() {chatToggleShow();} );
