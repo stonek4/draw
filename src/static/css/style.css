@@ -488,7 +488,7 @@ input[type=checkbox] {
   right:0px;
   bottom:0px;
 }
-
+/*css for chat box starts here, should be consistent with the style of etherdraw*/
 #chatBox {
   position: absolute;
   bottom: 0px;
@@ -531,7 +531,7 @@ input[type=checkbox] {
     left: 3px;
 
 }
-
+/*css for chat box ends here*/
 .whiteBG{
   background-color:#fff;
 }
