@@ -3,7 +3,7 @@
 ## An intuitive collaborative drawing web based tool.
 Collaborative real-time drawing, sketching & painting
 
-Fast, light weight, easy to maintain.  Try the [demo] (http://draw.etherpad.org).
+Fast, light weight, easy to maintain, fun.  Try the [demo] (http://draw.etherpad.org).
 
 Demo
 ----
